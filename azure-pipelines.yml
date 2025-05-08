@@ -16,6 +16,7 @@ stages:
             **/*.yml
             **/*.java
           TargetFolder: '$(Build.- task: PublishBuildArtifacts@1)'
+      - bash: ls -R $(Build.ArtifactStagingDirectory)
       - task: PublishBuildArtifacts@1
         inputs:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
