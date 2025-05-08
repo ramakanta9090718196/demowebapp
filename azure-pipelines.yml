@@ -12,11 +12,13 @@ stages:
       - task: CopyFiles@2
         inputs:
           SourceFolder: '$(System.DefaultWorkingDirectory)'
-          TargetFolder: '$(Build.- task: PublishBuildArtifacts@1)'
+          Contents: |
+            **/*.yml
+            **/*.java
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
       - bash: ls -R $(Build.ArtifactStagingDirectory)
       - task: PublishBuildArtifacts@1
         inputs:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
           ArtifactName: 'drop'
           publishLocation: 'Container'
-  
